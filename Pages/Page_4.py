@@ -53,6 +53,4 @@ with col4:
             original_image = np.array(original_image)
             ans = heurestic(uploaded_file)
             st.write(ans)
-
-
-clear_cache()
+            clear_cache()
