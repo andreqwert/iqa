@@ -9,7 +9,7 @@ from keras.utils import load_img, img_to_array
 
 
 def clear_cache():
-    st.legacy_caching.caching.clear_cache()
+    st.runtime.legacy_caching.clear_cache()
 
 
 add_page_title()
