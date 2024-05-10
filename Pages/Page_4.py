@@ -8,6 +8,9 @@ import io
 from keras.utils import load_img, img_to_array
 
 
+def clear_cache():
+    st.legacy_caching.caching.clear_cache()
+
 
 add_page_title()
 
@@ -50,3 +53,6 @@ with col4:
             original_image = np.array(original_image)
             ans = heurestic(uploaded_file)
             st.write(ans)
+
+
+clear_cache()
