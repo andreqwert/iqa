@@ -49,14 +49,20 @@ def load_mn_model():
     return load_model("Models/mn_model.keras")
 
 
+@st.cache
+def load_nima_model():
+    nima = MobileNet((None, None, 3), alpha=1, include_top=False, pooling='avg', weights=None)
+    x = Dropout(0.75)(nima.output)
+    x = Dense(10, activation='softmax')(x)
+    nima = Model(nima.input, x)
+    nima.load_weights('Models/nima_model.h5')
+    return nima
+
+
 cnn = load_cnn_model()
 MN_model = load_mn_model()
+nima = load_nima_model()
 
-nima = MobileNet((None, None, 3), alpha=1, include_top=False, pooling='avg', weights=None)
-x = Dropout(0.75)(nima.output)
-x = Dense(10, activation='softmax')(x)
-nima = Model(nima.input, x)
-nima.load_weights('Models/nima_model.h5')
 
 def get_cnn_predict(image):
     img = Image.open(image)
