@@ -35,10 +35,20 @@ class CNN(nn.Module):
         x = self.fc2(x)
         return x
 
-cnn = CNN()
-cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
 
-MN_model = load_model("Models/mn_model.keras")
+@st.cache
+def load_cnn_model():
+    cnn = CNN()
+    return cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
+
+
+@st.cache
+def load_mn_model():
+    return load_model("Models/mn_model.keras")
+
+
+cnn = load_cnn_model()
+MN_model = load_mn_model()
 
 nima = MobileNet((None, None, 3), alpha=1, include_top=False, pooling='avg', weights=None)
 x = Dropout(0.75)(nima.output)
