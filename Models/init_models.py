@@ -14,8 +14,8 @@ import streamlit as st
 
 
 class CNN(nn.Module):
-    def __init__(self):
-        super(CNN, self).__init__()
+    def init(self):
+        super(CNN, self).init()
         self.conv1 = nn.Conv2d(3, 16, kernel_size=3, padding=1)
         self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1)
         self.conv3 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
@@ -53,15 +53,11 @@ def load_nima_model():
     return nima
 
 
-@st.cache
-def load_cnn_model():
-    cnn_model = CNN()
-    return cnn_model.load_state_dict(torch.load("Models/cnn_model.pth")) 
 
-
+cnn = CNN()
+cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
 MN_model = load_mn_model()
 nima = load_nima_model()
-cnn = load_cnn_model()
 
 
 def get_cnn_predict(image):
