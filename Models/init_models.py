@@ -53,8 +53,9 @@ def load_nima_model():
     return nima
 
 
+
 cnn = CNN()
-cnn.load_state_dict(torch.load("cnn_model.pth"))
+cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
 MN_model = load_mn_model()
 nima = load_nima_model()
 
