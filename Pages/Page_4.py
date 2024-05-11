@@ -49,8 +49,6 @@ with col4:
     st.header("WS")
     if a:
         if uploaded_file is not None:
-            original_image = Image.open(uploaded_file)
-            original_image = np.array(original_image)
             ans = heurestic(uploaded_file)
             st.write(ans)
             clear_cache()
