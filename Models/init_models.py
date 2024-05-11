@@ -39,11 +39,6 @@ class CNN(nn.Module):
 
 
 @st.cache
-def load_cnn_model(cnn):
-    return cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
-
-
-@st.cache
 def load_mn_model():
     return load_model("Models/mn_model.keras")
 
@@ -58,8 +53,9 @@ def load_nima_model():
     return nima
 
 
+
 cnn = CNN()
-cnn = load_cnn_model(cnn)
+cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
 MN_model = load_mn_model()
 nima = load_nima_model()
 
