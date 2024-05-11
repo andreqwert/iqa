@@ -10,6 +10,7 @@ import itertools
 
 def brightness(im_file):
     im = Image.open(im_file).convert("RGB")
+    im = im.resize((224, 224))
     stat = ImageStat.Stat(im)
     print(stat)
     gs = (math.sqrt(0.241 * (r ** 2) + 0.691 * (g ** 2) + 0.068 * (b ** 2))
