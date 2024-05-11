@@ -10,6 +10,8 @@ from keras.layers import Dropout, Dense
 from keras.saving import load_model
 from keras.applications.mobilenet import preprocess_input, MobileNet
 from keras.preprocessing.image import img_to_array, load_img
+import streamlit as st
+
 
 class CNN(nn.Module):
     def __init__(self):
