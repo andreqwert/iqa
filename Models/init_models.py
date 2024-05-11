@@ -53,11 +53,16 @@ def load_nima_model():
     return nima
 
 
+@st.cache
+def load_cnn_model():
+    cnn_model = CNN()
+    cnn_model = cnn_model.load_state_dict(torch.load("Models/cnn_model.pth"))
+    return cnn_model 
 
-cnn = CNN()
-cnn.load_state_dict(torch.load("Models/cnn_model.pth"))
+
 MN_model = load_mn_model()
 nima = load_nima_model()
+cnn = load_cnn_model()
 
 
 def get_cnn_predict(image):
